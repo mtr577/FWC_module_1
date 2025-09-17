@@ -1,0 +1,181 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
+\def\inputGnumericTable{}
+\usepackage[latin1]{inputenc}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{ifthen}
+\geometry{top=1in, bottom=1.5cm, left=1.5cm, right=1.5cm}    % Header and Footer settings
+\pagestyle{empty}
+\sectionfont{\color{blue}}
+\begin{document}
+
+\thispagestyle{fancy}
+\fancyhf{} % Clear default header and footer
+\fancyhead[L]{% Left header
+        \includegraphics[width=8cm, height=1.7cm]{images/logo.png} % Adjust dimensions
+}
+\fancyhead[R]{% Right header
+    Name: M.Thrinath Rao \\
+    Batch: COMETFWC034 \\
+    Date: 28 August 2025
+}
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\fancyfoot[C]{\thepage} % Page number centered in footer
+\vspace*{1cm}
+\begin{center}
+        {\LARGE \textbf{\textcolor{blue}{GATE 2010 EC, $12^{th}$ Question Analysis}}}
+\end{center}
+\section*{\textbf{Question 12}}
+For the output F to be 1 in the logic circuit shown, the input combination should be
+\begin{center}
+        \includegraphics[width=12cm, height=8cm]{images/circuit.jpg}
+\end{center}
+\begin{multicols}{2}
+                \begin{enumerate}[label=\Alph*]
+                        \item A=1, B=1, C=0
+                        \item A=1, B=0, C=0
+                        \item A=0, B=1, C=0
+                        \item A=0, B=0, C=1
+                \end{enumerate}
+\end{multicols}
+\section*{\textbf{Question Analysis:}}
+\begin{itemize}
+        \item For Two input XOR Gate: Let output be $X= A\oplus B$
+        \item For Two input XNOR Gate: Let output be $Y= A\odot B$
+        \item For Three input XNOR Gate: output $F=X\odot Y\odot C$
+        \item The Final $F$ expression is $F=(A\oplus B)\odot (A\odot B)\odot C$
+        \item The Truth table for above expressions is as follows
+\end{itemize}
+\newpage
+\section*{\textbf{The Truth Table}}
+\begin{center}
+        \begin{table}[h]
+        \input{tables/table}
+\end{table}
+\end{center}
+\section*{\textbf{Hardware Implementation}}
+The above problem is implemented and tested in hardware using Arduino UNO board. Here we implemented a FSM using the 7474 IC and blinked the LED as per truth table and verified the expression.
+\section*{Required Components \& Pin Connections}
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|}
+\hline
+\textbf{S.No} & \textbf{Component} \\ \hline
+1 & Arduino Uno Board \\
+2 & Breadboard \\
+3 & 7474 IC (2) \\
+4 & LEDs (1) \\
+5 & 7447 IC (1) \\
+6 & Seven segment (1) \\
+7 & Resistors: 220$\Omega$ (2) \\
+8 & Jumper Wires \\
+9 & USB Cable \\
+\hline
+\end{tabular}
+\end{table}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.45\textwidth}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Component} & \textbf{Arduino Pin} \\ \hline
+Input A (7474-1 Q1) & Digital 2 \\
+Input B (7474-1 Q2) & Digital 3 \\
+Input C (7474-2 Q1) & Digital 4 \\
+Output a (7447 A) & Digital 8 \\
+Output b (7447 B) & Digital 9 \\
+Output c (7447 C) & Digital 10 \\
+Output d (7447 D) & Digital 11 \\
+Output F (LED) & Digital 7 \\
+Output clk (7474 clk) & Digital 13 \\
+GND & GND \\
+VCC & 5V \\
+\hline
+\end{tabular}
+\end{table}
+\end{minipage}
+\end{center}
+\section*{Logic Description}
+\begin{itemize}
+        \item Let initialize inputs $A=0,B=0,C=0$
+        \item The output expressions from state transition table are reduced using KMAP and are as follows
+                \begin{multicols}{2}
+        \item $a=\bar{C}$
+        \item $b=\bar{B}.C + B.\bar{C}.$
+        \item $c=A.\bar{B} + A.\bar{C} + \bar{A}.B.C$
+        \item $d=0$
+        \item $F=\bar{C}$
+                \end{multicols}
+\end{itemize}
+\section*{State Transition Table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+        \multicolumn{3}{|c|}{\textbf{Present State}} & \multicolumn{4}{|c|}{\textbf{Next State}} & \textbf{Output} \\ \hline
+        A & B & C & d & c & b & a & F\\ \hline
+        0 & 0 & 0 & x & 0 & 0 & 1 & 1\\
+        0 & 0 & 1 & x & 0 & 1 & 0 & 0\\
+        0 & 1 & 0 & x & 0 & 1 & 1 & 1\\
+        0 & 1 & 1 & x & 1 & 0 & 0 & 0\\
+        1 & 0 & 0 & x & 1 & 0 & 1 & 1\\
+        1 & 0 & 1 & x & 1 & 1 & 0 & 0\\
+        1 & 1 & 0 & x & 1 & 1 & 1 & 1\\
+        1 & 1 & 1 & x & 0 & 0 & 0 & 0\\ \hline
+\end{tabular}
+\end{center}
+\section*{Code Uploading Steps}
+\begin{enumerate}
+        \item Create a Platform IO project
+        \item Write The code in main.cpp in src
+        \item Run the PIO project with command "pio run". It will compile the code and creates .hex file
+        \item Copy the .hex file to ArduinoDriod folder
+        \item connect the Arduino UNO to mobile with OTG cable
+        \item Upload the hex file using "upload precomplied" option
+        \item Observe the ouput and verify the expression
+\end{enumerate}
+\section*{Experimental Truth Table}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+A & B & C & F (LED Output) \\ \hline
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 0 \\
+0 & 1 & 1 & 1 \\
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+\end{table}
+\begin{center}
+        \includegraphics[width=12cm, height=12cm]{images/output.jpg}
+\end{center}
+\section*{Conclusion}
+\begin{itemize}
+        \item From Experimental Truth Table $F$ will be $1$ when $C=1$.
+        \item This matches option (D) from the original GATE question.
+        \item The hardware experiment confirms the circuit's theoretical logic.
+\end{itemize}
+
+\end{document}
