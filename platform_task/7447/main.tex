@@ -68,7 +68,7 @@ For the output F to be 1 in the logic circuit shown, the input combination shoul
 \end{table}
 \end{center}
 \section*{\textbf{Hardware Implementation}}
-The above problem is implemented and tested in hardware using Arduino UNO board. Here we implemented a FSM using the 7474 IC and blinked the LED as per truth table and verified the expression.
+The above problem is implemented and tested in hardware using Arduino UNO board. Here we used 7447 and seven segment to display output F is 1 or 0 for input A B C as per truth table and verified the expression.
 \section*{Required Components \& Pin Connections}
 \begin{center}
 \begin{minipage}{0.45\textwidth}
@@ -79,13 +79,11 @@ The above problem is implemented and tested in hardware using Arduino UNO board.
 \textbf{S.No} & \textbf{Component} \\ \hline
 1 & Arduino Uno Board \\
 2 & Breadboard \\
-3 & 7474 IC (2) \\
-4 & LEDs (1) \\
-5 & 7447 IC (1) \\
-6 & Seven segment (1) \\
-7 & Resistors: 220$\Omega$ (2) \\
-8 & Jumper Wires \\
-9 & USB Cable \\
+3 & 7447 IC (1) \\
+4 & Seven segment (1) \\
+5 & Resistors: 220$\Omega$ (1) \\
+6 & Jumper Wires \\
+7 & USB Cable \\
 \hline
 \end{tabular}
 \end{table}
@@ -97,15 +95,13 @@ The above problem is implemented and tested in hardware using Arduino UNO board.
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Component} & \textbf{Arduino Pin} \\ \hline
-Input A (7474-1 Q1) & Digital 2 \\
-Input B (7474-1 Q2) & Digital 3 \\
-Input C (7474-2 Q1) & Digital 4 \\
+Input A (5V or GND) & Digital 2 \\
+Input B (5V or GND) & Digital 3 \\
+Input C (5V or GND) & Digital 4 \\
 Output a (7447 A) & Digital 8 \\
 Output b (7447 B) & Digital 9 \\
 Output c (7447 C) & Digital 10 \\
 Output d (7447 D) & Digital 11 \\
-Output F (LED) & Digital 7 \\
-Output clk (7474 clk) & Digital 13 \\
 GND & GND \\
 VCC & 5V \\
 \hline
@@ -116,31 +112,10 @@ VCC & 5V \\
 \section*{Logic Description}
 \begin{itemize}
 	\item Let initialize inputs $A=0,B=0,C=0$
-	\item The output expressions from state transition table are reduced using KMAP and are as follows
-		\begin{multicols}{2}
-	\item $a=\bar{C}$
-	\item $b=\bar{B}.C + B.\bar{C}.$
-	\item $c=A.\bar{B} + A.\bar{C} + \bar{A}.B.C$
-	\item $d=0$
-	\item $F=\bar{C}$
-		\end{multicols}
+	\item The output expressions from ciruit is as follows
+	\item $F=(A\oplus B)\odot (A\odot B)\odot C$
+	\item Change the inputs A B C and note down the F output on sevensegg display in experimental truth table
 \end{itemize}
-\section*{State Transition Table}
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline
-	\multicolumn{3}{|c|}{\textbf{Present State}} & \multicolumn{4}{|c|}{\textbf{Next State}} & \textbf{Output} \\ \hline
-	A & B & C & d & c & b & a & F\\ \hline
-	0 & 0 & 0 & x & 0 & 0 & 1 & 1\\
-	0 & 0 & 1 & x & 0 & 1 & 0 & 0\\
-	0 & 1 & 0 & x & 0 & 1 & 1 & 1\\
-	0 & 1 & 1 & x & 1 & 0 & 0 & 0\\
-	1 & 0 & 0 & x & 1 & 0 & 1 & 1\\
-	1 & 0 & 1 & x & 1 & 1 & 0 & 0\\
-	1 & 1 & 0 & x & 1 & 1 & 1 & 1\\
-	1 & 1 & 1 & x & 0 & 0 & 0 & 0\\ \hline
-\end{tabular}
-\end{center}
 \section*{Code Uploading Steps}
 \begin{enumerate}
 	\item Create a Platform IO project
