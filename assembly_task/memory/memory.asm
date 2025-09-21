@@ -1,12 +1,5 @@
 .include "/sdcard/fwc_module_1/assembly/m328pdef.inc"
 
-; --------------------------------------------------
-; Inputs : A=PD5, B=PD4, C=PD3, D=PD2
-; Output : F -> PB0 (LED ON if F=1)
-; F truth table stored in SRAM 0x60–0x6F
-; F=1 for inputs: 2,3,5,7,8,9,12
-; --------------------------------------------------
-
 .org 0x00
 rjmp reset
 
@@ -19,7 +12,7 @@ reset:
     ldi r16,0x01
     out DDRB,r16
 
-    ; -------- Store F truth table in SRAM --------
+    ; Store F truth table in SRAM
     ldi r16,0  ; F(0)=0
     sts 0x60,r16
     ldi r16,0  ; F(1)=0
@@ -54,18 +47,15 @@ reset:
     sts 0x6F,r16
 
 main:
-    ; -------- Read inputs --------
     in r16,PIND
     lsr r16
     lsr r16
     andi r16,0x0F      ; r16 = 0–15 (ABCD)
 
-    ; -------- Lookup F from SRAM --------
 ldi r30, 0x60     ; Z low byte = base address 0x60
 ldi r31, 0x00     ; Z high byte = 0x00 (for lower SRAM)
 add r30, r16      ; r16 = input (0–15)
 ld r17, Z         ; r17 = F from table
-    ; -------- Output F to PB0 --------
     andi r17,0x01
     out PORTB,r17
 

@@ -1,35 +1,22 @@
 .include "/sdcard/fwc_module_1/assembly/m328pdef.inc"
 
-; --------------------------------------------------
-; FSM for 2010 GATE Q39
-; Inputs  : PD2–PD5 = Previous State (A,B,C,D)
-; Outputs : PB0 = F (LED)
-;           PB1–PB4 = Next State DCBA → 7474 → 7-seg
-;           PB5 = Clock (Arduino pin 13) toggling 500ms
-; --------------------------------------------------
-
 .org 0x00
     rjmp reset
 
 reset:
-    ; ---- PORTD input ----
     ldi r16, 0x00
     out DDRD, r16
 
-    ; ---- PORTB output ----
-    ; PB0–PB5 outputs (F+NS+CLK)
     ldi r16, 0x3F
     out DDRB, r16
 
 main:
-    ; ---- Read Previous State ----
     in r16, PIND
     lsr r16
-    lsr r16             ; PD5..PD2 → bits3..0
+    lsr r16             ; PD5..PD2
     andi r16, 0x0F      ; r16 = PS = ABCD
     mov r18, r16        ; Save PS in r18
 
-    ; ---- Extract individual PS bits ----
     mov r19,r18         ; A
     andi r19,0b1000
     lsr r19
@@ -48,8 +35,6 @@ main:
     mov r22,r18         ; D
     andi r22,0b0001     ; r22 = D
 
-    ; ---- Compute Next State (NS = DCBA) ----
-    ; A_out = ~A
     ldi r23,1
     eor r23,r19         ; A_out
 
@@ -68,10 +53,6 @@ main:
     and r26,r21         ; A·B·C
     eor r26,r22         ; D_out
 
-    ; ---- Compute F (based on PS bits, minterms 1,2,4,6,7,8,11) ----
-    ; F = (~A·~B·D) + (~A·B·~C) + (~A·B·C) + (A·~B·~C·~D) + (A·~B·C·D)
-    
-    ; Term1: ~A·~B·D
     ldi r27,1
     eor r27,r19         ; ~A
     ldi r28,1
@@ -118,43 +99,36 @@ main:
     mov r16,r22         ; D
     and r31,r16         ; Term5 in r31
 
-    ; Combine all terms → r17 = F
+    ; Combine all terms -> r17 = F
     mov r17,r27
     or r17,r28
     or r17,r29
     or r17,r30
     or r17,r31          ; r17 = F
 
-    ; ---- Output to PORTB ----
-    ; PB0 = F, PB1–PB4 = NS (A_out..D_out)
     ldi r16,0
     or r16,r17          ; F to bit0
     mov r27,r16
 
-    ; A_out = r23 → PB1
     mov r16,r23
     lsl r16
     lsl r16
     lsl r16
     or r27,r16
 
-    ; B_out = r24 → PB2
     mov r16,r24
     lsl r16
     lsl r16
     or r27,r16
 
-    ; C_out = r25 → PB3
     mov r16,r25
     lsl r16
     or r27,r16
 
-    ; D_out = r26 → PB4
     or r27,r26
 
     out PORTB,r27
 
-    ; ---- Toggle Clock PB5 every 500ms ----
     sbi PORTB,5
     rcall delay_500ms
     cbi PORTB,5
@@ -162,10 +136,6 @@ main:
 
     rjmp main
 
-; --------------------------
-; 500ms delay using 3 registers (nested loops)
-; r30 = outer, r31 = middle, r16 = inner
-; --------------------------
 delay_500ms:
     ldi r30, 200
 outer_loop:

@@ -31,33 +31,22 @@
 \fancyhead[R]{% Right header
     Name: M.Thrinath Rao \\
     Batch: COMETFWC034 \\
-    Date: 28 August 2025
+    Date:  9 september 2025
 }
 \renewcommand{\headrulewidth}{0pt} % Remove header line
 \fancyfoot[C]{\thepage} % Page number centered in footer
 \vspace*{1cm}
 \begin{center}
-        {\LARGE \textbf{\textcolor{blue}{GATE 2010 EC, $12^{th}$ Question Analysis}}}
+        {\LARGE \textbf{\textcolor{blue}{GATE 2010 EE, $52^{nd}$ Question Analysis}}}
 \end{center}
-\section*{\textbf{Question 12}}
-For the output F to be 1 in the logic circuit shown, the input combination should be
+\section*{\textbf{Question 52}}
 \begin{center}
-        \includegraphics[width=12cm, height=8cm]{images/circuit.jpg}
+        \includegraphics[width=18cm, height=10cm]{images/circuit.jpg}
 \end{center}
-\begin{multicols}{2}
-                \begin{enumerate}[label=\Alph*]
-                        \item A=1, B=1, C=0
-                        \item A=1, B=0, C=0
-                        \item A=0, B=1, C=0
-                        \item A=0, B=0, C=1
-                \end{enumerate}
-\end{multicols}
 \section*{\textbf{Question Analysis:}}
 \begin{itemize}
-        \item For Two input XOR Gate: Let output be $X= A\oplus B$
-        \item For Two input XNOR Gate: Let output be $Y= A\odot B$
-        \item For Three input XNOR Gate: output $F=X\odot Y\odot C$
-        \item The Final $F$ expression is $F=(A\oplus B)\odot (A\odot B)\odot C$
+        \item From above Kmap, the output F is as follows
+	\item $F=\bar{X}.\bar{Y}+Y.Z$
         \item The Truth table for above expressions is as follows
 \end{itemize}
 \newpage
@@ -68,7 +57,7 @@ For the output F to be 1 in the logic circuit shown, the input combination shoul
 \end{table}
 \end{center}
 \section*{\textbf{Hardware Implementation}}
-The above problem is implemented and tested in hardware using Arduino UNO board. Here we implemented a FSM using the 7474 IC and blinked the LED as per truth table and verified the expression.
+The above problem is implemented and tested in hardware using Arduino UNO board. Here we used 3i/ps and glow LED (output F) as per truth table and verified the expression.
 \section*{Required Components \& Pin Connections}
 \begin{center}
 \begin{minipage}{0.45\textwidth}
@@ -79,13 +68,10 @@ The above problem is implemented and tested in hardware using Arduino UNO board.
 \textbf{S.No} & \textbf{Component} \\ \hline
 1 & Arduino Uno Board \\
 2 & Breadboard \\
-3 & 7474 IC (2) \\
-4 & LEDs (1) \\
-5 & 7447 IC (1) \\
-6 & Seven segment (1) \\
-7 & Resistors: 220$\Omega$ (2) \\
-8 & Jumper Wires \\
-9 & USB Cable \\
+3 & LEDs (1) \\
+4 & Resistors: 220$\Omega$ (1) \\
+5 & Jumper Wires \\
+6 & USB Cable \\
 \hline
 \end{tabular}
 \end{table}
@@ -97,15 +83,10 @@ The above problem is implemented and tested in hardware using Arduino UNO board.
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Component} & \textbf{Arduino Pin} \\ \hline
-Input A (7474-1 Q1) & Digital 2 \\
-Input B (7474-1 Q2) & Digital 3 \\
-Input C (7474-2 Q1) & Digital 4 \\
-Output a (7447 A) & Digital 8 \\
-Output b (7447 B) & Digital 9 \\
-Output c (7447 C) & Digital 10 \\
-Output d (7447 D) & Digital 11 \\
-Output F (LED) & Digital 7 \\
-Output clk (7474 clk) & Digital 13 \\
+Input Z (5V or GND) & Digital 2 \\
+Input Y (5V or GND) & Digital 3 \\
+Input X (5V or GND) & Digital 4 \\
+Output F (LED) & Digital 8 \\
 GND & GND \\
 VCC & 5V \\
 \hline
@@ -115,37 +96,16 @@ VCC & 5V \\
 \end{center}
 \section*{Logic Description}
 \begin{itemize}
-        \item Let initialize inputs $A=0,B=0,C=0$
-        \item The output expressions from state transition table are reduced using KMAP and are as follows
-                \begin{multicols}{2}
-        \item $a=\bar{C}$
-        \item $b=\bar{B}.C + B.\bar{C}.$
-        \item $c=A.\bar{B} + A.\bar{C} + \bar{A}.B.C$
-        \item $d=0$
-        \item $F=\bar{C}$
-                \end{multicols}
+        \item Let initialize inputs $X=0,Y=0,Z=0$
+        \item The output expressions from KMAP and is as follows
+	\item $F=\bar{X}.\bar{Y}+Y.Z$
+	\item Change inputs and note Down the Experimental Truth table
 \end{itemize}
-\section*{State Transition Table}
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline
-        \multicolumn{3}{|c|}{\textbf{Present State}} & \multicolumn{4}{|c|}{\textbf{Next State}} & \textbf{Output} \\ \hline
-        A & B & C & d & c & b & a & F\\ \hline
-        0 & 0 & 0 & x & 0 & 0 & 1 & 1\\
-        0 & 0 & 1 & x & 0 & 1 & 0 & 0\\
-        0 & 1 & 0 & x & 0 & 1 & 1 & 1\\
-        0 & 1 & 1 & x & 1 & 0 & 0 & 0\\
-        1 & 0 & 0 & x & 1 & 0 & 1 & 1\\
-        1 & 0 & 1 & x & 1 & 1 & 0 & 0\\
-        1 & 1 & 0 & x & 1 & 1 & 1 & 1\\
-        1 & 1 & 1 & x & 0 & 0 & 0 & 0\\ \hline
-\end{tabular}
-\end{center}
 \section*{Code Uploading Steps}
 \begin{enumerate}
-        \item Create a Platform IO project
-        \item Write The code in main.cpp in src
-        \item Run the PIO project with command "pio run". It will compile the code and creates .hex file
+        \item Create a blink folder and write Makefile
+        \item Write The code in main.c
+        \item Run the command "make". It will compile the code and creates .hex file
         \item Copy the .hex file to ArduinoDriod folder
         \item connect the Arduino UNO to mobile with OTG cable
         \item Upload the hex file using "upload precomplied" option
@@ -156,13 +116,13 @@ VCC & 5V \\
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
-A & B & C & F (LED Output) \\ \hline
-0 & 0 & 0 & 0 \\
+X & Y & Z & F (Output) \\ \hline
+0 & 0 & 0 & 1 \\
 0 & 0 & 1 & 1 \\
 0 & 1 & 0 & 0 \\
 0 & 1 & 1 & 1 \\
 1 & 0 & 0 & 0 \\
-1 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 \\
 1 & 1 & 0 & 0 \\
 1 & 1 & 1 & 1 \\
 \hline
@@ -173,8 +133,8 @@ A & B & C & F (LED Output) \\ \hline
 \end{center}
 \section*{Conclusion}
 \begin{itemize}
-        \item From Experimental Truth Table $F$ will be $1$ when $C=1$.
-        \item This matches option (D) from the original GATE question.
+        \item From Experimental Truth Table and actual truth table $F=\bar{X}.\bar{Y}+Y.Z$
+        \item This matches option (B) from the original GATE question.
         \item The hardware experiment confirms the circuit's theoretical logic.
 \end{itemize}
 

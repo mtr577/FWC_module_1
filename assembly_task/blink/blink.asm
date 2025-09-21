@@ -1,10 +1,5 @@
 .include "/sdcard/fwc_module_1/assembly/m328pdef.inc"
 
-; --------------------------------------------------
-; Inputs : A=PD5, B=PD4, C=PD3, D=PD2
-; Output : F -> PB0 (LED ON if F=1)
-; --------------------------------------------------
-
 .org 0x00
 rjmp reset
 
@@ -18,14 +13,12 @@ reset:
     out DDRB, r16
 
 main:
-    ; -------- Read inputs --------
-    in r16, PIND          ; r16 = xxxxABCD (bits 5..2)
-    lsr r16               ; >>2 so D -> bit0, C->bit1, B->bit2, A->bit3
+    in r16, PIND         
+    lsr r16              
     lsr r16
-    andi r16, 0x0F        ; keep only lower 4 bits
-    mov r17, r16          ; copy → r17 = ABCD
+    andi r16, 0x0F       
+    mov r17, r16         ;copy → r17 = ABCD
 
-    ; -------- Extract individual bits --------
     mov r18, r17
     andi r18, 0b1000      ; A mask
     lsr r18
@@ -43,9 +36,7 @@ main:
 
     mov r21, r17
     andi r21, 0b0001      ; D mask
-    ; already at bit0 → r21 = D
 
-    ; -------- Complements --------
     ldi r22,1
     eor r22,r18           ; r22 = ~A
 
@@ -58,34 +49,33 @@ main:
     ldi r25,1
     eor r25,r21           ; r25 = ~D
 
-    ; -------- Term1 = ~A·~B·C --------
+    ; Term1 = ~A·~B·C
     mov r26,r22
     and r26,r23
     and r26,r20
 
-    ; -------- Term2 = ~A·B·D --------
+    ; Term2 = ~A·B·D 
     mov r27,r22
     and r27,r19
     and r27,r21
 
-    ; -------- Term3 = A·~B·~C --------
+    ; Term3 = A·~B·~C
     mov r28,r18
     and r28,r23
     and r28,r24
 
-    ; -------- Term4 = A·B·~C·~D --------
+    ; Term4 = A·B·~C·~D 
     mov r29,r18
     and r29,r19
     and r29,r24
     and r29,r25
 
-    ; -------- Combine all terms --------
+    ; Combine all terms 
     mov r30,r26
     or  r30,r27
     or  r30,r28
     or  r30,r29           ; r30 = F
 
-    ; -------- Output to PB0 --------
     andi r30,0x01
     out PORTB,r30
 

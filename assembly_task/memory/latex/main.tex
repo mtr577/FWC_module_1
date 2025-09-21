@@ -92,7 +92,7 @@ The Boolean function reaized by the logic circuit shown is
 \end{tabular}
 \end{center}
 \section*{\textbf{Hardware Implementation}}
-The above problem is implemented and tested in hardware using Arduino UNO board. Here we used the 7447 and 4 I/Ps and displayed the corresponding F value on seven segment as per truth table and verified the expression.
+The above problem is implemented and tested in hardware using Arduino UNO board. Here we used the LED to glow output F as per truth table and stored the truth table in memory of MC and verified the expression.
 \section*{Required Components \& Pin Connections}
 \begin{center}
 \begin{minipage}{0.45\textwidth}
@@ -103,11 +103,10 @@ The above problem is implemented and tested in hardware using Arduino UNO board.
 \textbf{S.No} & \textbf{Component} \\ \hline
 1 & Arduino Uno Board \\
 2 & Breadboard \\
-3 & 7447 IC (1) \\
-4 & Seven segment (1) \\
-5 & Resistors: 220$\Omega$ (1) \\
-6 & Jumper Wires \\
-7 & USB Cable \\
+3 & LED (1) \\
+4 & Resistors: 220$\Omega$ (1) \\
+5 & Jumper Wires \\
+6 & USB Cable \\
 \hline
 \end{tabular}
 \end{table}
@@ -119,14 +118,11 @@ The above problem is implemented and tested in hardware using Arduino UNO board.
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Component} & \textbf{Arduino Pin} \\ \hline
-Input A(GND or 5v) & Digital 2 \\
-Input B(GND or 5v) & Digital 3 \\
-Input C(GND or 5v) & Digital 4 \\
-Input D(GND or 5v) & Digital 5 \\
-Output a (7447 A) & Digital 8 \\
-Output b (7447 B) & Digital 9 \\
-Output c (7447 C) & Digital 10 \\
-Output d (7447 D) & Digital 11 \\
+Input A(GND or 5v) & Digital 5 \\
+Input B(GND or 5v) & Digital 4 \\
+Input C(GND or 5v) & Digital 3 \\
+Input D(GND or 5v) & Digital 2 \\
+Output F (LED ) & Digital 8 \\
 GND & GND \\
 VCC & 5V \\
 \hline
@@ -143,9 +139,9 @@ VCC & 5V \\
 \end{itemize}
 \section*{Code Uploading Steps}
 \begin{enumerate}
-        \item Create a Platform IO project
-        \item Write The code in main.cpp in src
-        \item Run the PIO project with command "pio run". It will compile the code and creates .hex file
+        \item Create a memory folder
+        \item Write The code in memory.ams
+        \item Run the command "avra memory.asm". It will compile the code and creates .hex file
         \item Copy the .hex file to ArduinoDriod folder
         \item connect the Arduino UNO to mobile with OTG cable
         \item Upload the hex file using "upload precomplied" option

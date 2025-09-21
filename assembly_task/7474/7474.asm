@@ -1,12 +1,5 @@
 .include "/sdcard/fwc_module_1/assembly/m328pdef.inc"
 
-; ---------------------------------------------------
-; Inputs : A=PD5, B=PD4, C=PD3, D=PD2
-; Outputs: PB0 → D input of 7474
-;          PB5 → CLK for 7474 (square wave ~1 Hz)
-; 7474 Q drives LED externally
-; ---------------------------------------------------
-
 .org 0x00
 rjmp reset
 
@@ -20,14 +13,12 @@ reset:
     out DDRB, r16
 
 main:
-    ; -------- Read inputs --------
     in r16, PIND
     lsr r16
     lsr r16
     andi r16, 0x0F
     mov r17, r16          ; r17 = ABCD
 
-    ; -------- Extract A,B,C,D --------
     mov r18, r17
     andi r18, 0b1000
     lsr r18
@@ -46,7 +37,6 @@ main:
     mov r21, r17
     andi r21, 0b0001      ; D
 
-    ; -------- Complements --------
     ldi r22,1
     eor r22,r18           ; ~A
     ldi r23,1
@@ -56,7 +46,6 @@ main:
     ldi r25,1
     eor r25,r21           ; ~D
 
-    ; -------- Terms --------
     mov r26,r22
     and r26,r23
     and r26,r20           ; Term1
@@ -74,17 +63,14 @@ main:
     and r29,r24
     and r29,r25           ; Term4
 
-    ; -------- Final F --------
     mov r30,r26
     or  r30,r27
     or  r30,r28
     or  r30,r29
 
-    ; -------- Drive D input --------
     andi r30,0x01         ; ensure single bit
     out PORTB,r30         ; PB0 = F
 
-    ; -------- Toggle CLK --------
     sbi PORTB,5           ; PB5 = 1
     rcall delay500
     cbi PORTB,5           ; PB5 = 0
@@ -92,10 +78,6 @@ main:
 
     rjmp main
 
-; ---------------------------------------------------
-; Delay ~500 ms (at 16 MHz) by nested loops
-; Approximate cycle counts tuned manually
-; ---------------------------------------------------
 delay500:
     ldi r16, 50           ; outer loop
 d1: ldi r17, 200

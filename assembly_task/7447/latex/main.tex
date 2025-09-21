@@ -119,10 +119,10 @@ The above problem is implemented and tested in hardware using Arduino UNO board.
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Component} & \textbf{Arduino Pin} \\ \hline
-Input A(GND or 5v) & Digital 2 \\
-Input B(GND or 5v) & Digital 3 \\
-Input C(GND or 5v) & Digital 4 \\
-Input D(GND or 5v) & Digital 5 \\
+Input A(GND or 5v) & Digital 5 \\
+Input B(GND or 5v) & Digital 4 \\
+Input C(GND or 5v) & Digital 3 \\
+Input D(GND or 5v) & Digital 2 \\
 Output a (7447 A) & Digital 8 \\
 Output b (7447 B) & Digital 9 \\
 Output c (7447 C) & Digital 10 \\
@@ -143,9 +143,9 @@ VCC & 5V \\
 \end{itemize}
 \section*{Code Uploading Steps}
 \begin{enumerate}
-        \item Create a Platform IO project
-        \item Write The code in main.cpp in src
-        \item Run the PIO project with command "pio run". It will compile the code and creates .hex file
+        \item Create a sevseg folder
+        \item Write The code in sevseg.asm
+        \item Run the command "avra sevseg.asm". It will compile the code and creates .hex file
         \item Copy the .hex file to ArduinoDriod folder
         \item connect the Arduino UNO to mobile with OTG cable
         \item Upload the hex file using "upload precomplied" option
