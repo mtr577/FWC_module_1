@@ -1,0 +1,7 @@
+# Inputs
+set_io P 6
+set_io Q 2
+set_io R 3
+
+# Output
+set_io F 62

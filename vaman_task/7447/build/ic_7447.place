@@ -1,0 +1,15 @@
+Netlist_File: ic_7447.net Netlist_ID: SHA256:6d153c911b5de8795b536dbf681bf97eb333c7e665a490a59e371475d76787b0
+Array size: 39 x 35 logic blocks
+
+#block name	x	y	subblk	block number
+#----------	--	--	------	------------
+A_LUT3_O.t_frag	10	4	0	#0
+$iopadmap$ic_7447.A	28	3	0	#1
+Q		12	3	0	#2
+$iopadmap$ic_7447.B	26	3	0	#3
+$iopadmap$ic_7447.C	24	3	0	#4
+$iopadmap$ic_7447.D	22	3	0	#5
+P		10	3	0	#6
+R		14	3	0	#7
+$false		3	1	0	#8
+$true		2	1	0	#9

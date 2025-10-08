@@ -1,0 +1,12 @@
+Netlist_File: kmap.net Netlist_ID: SHA256:601205e590f1867f2647e9034f413904d1aeeaccd21a4092ca2bcea368ab7e57
+Array size: 39 x 35 logic blocks
+
+#block name	x	y	subblk	block number
+#----------	--	--	------	------------
+F_LUT3_O.t_frag	22	11	0	#0
+$iopadmap$kmap.F	22	3	0	#1
+Q		12	3	0	#2
+R		14	3	0	#3
+P		10	3	0	#4
+$false		3	1	0	#5
+$true		2	1	0	#6

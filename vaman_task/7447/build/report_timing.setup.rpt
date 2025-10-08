@@ -1,0 +1,37 @@
+#Timing report of worst 1 path(s)
+# Unit scale: 1e-09 seconds
+# Output precision: 3
+
+#Path 1
+Startpoint: Q.inpad[0] (.input clocked by virtual_io_clock)
+Endpoint  : out:A.outpad[0] (.output clocked by virtual_io_clock)
+Path Type : setup
+
+Point                                                                 Incr      Path
+------------------------------------------------------------------------------------
+clock virtual_io_clock (rise edge)                                   0.000     0.000
+clock source latency                                                 0.000     0.000
+input external delay                                                 0.000     0.000
+Q.inpad[0] (.input)                                                  0.000     0.000
+$iopadmap$ic_7447.Q.I_PAD_$inp[0] (BIDIR_CELL)                       0.000     0.000
+$iopadmap$ic_7447.Q.I_DAT[0] (BIDIR_CELL)                           10.958    10.958
+A_LUT3_O.t_frag.XB2[0] (T_FRAG)                                      4.575    15.533
+A_LUT3_O.t_frag.XZ[0] (T_FRAG)                                       1.552    17.085
+$iopadmap$ic_7447.A.O_DAT[0] (BIDIR_CELL)                            7.878    24.964
+$iopadmap$ic_7447.A.O_PAD_$out[0] (BIDIR_CELL)                       9.809    34.773
+out:A.outpad[0] (.output)                                            0.000    34.773
+data arrival time                                                             34.773
+
+clock virtual_io_clock (rise edge)                                   0.000     0.000
+clock source latency                                                 0.000     0.000
+clock uncertainty                                                    0.000     0.000
+output external delay                                                0.000     0.000
+data required time                                                             0.000
+------------------------------------------------------------------------------------
+data required time                                                             0.000
+data arrival time                                                            -34.773
+------------------------------------------------------------------------------------
+slack (VIOLATED)                                                             -34.773
+
+
+#End of timing report

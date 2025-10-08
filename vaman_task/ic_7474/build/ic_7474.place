@@ -1,0 +1,14 @@
+Netlist_File: ic_7474.net Netlist_ID: SHA256:a457509b4b2e0c5c3b7a4230506fc6fab0485b7e30f909365e9f8aa8b29c5768
+Array size: 39 x 35 logic blocks
+
+#block name	x	y	subblk	block number
+#----------	--	--	------	------------
+u_qlal4s3b_cell_macro	1	1	0	#0
+F_comb_LUT3_O.t_frag	14	8	0	#1
+Q		12	3	0	#2
+P		10	3	0	#3
+R		14	3	0	#4
+$iopadmap$ic_7474.F_led	22	3	0	#5
+F_led_dff_Q	22	7	0	#6
+$false		3	1	0	#7
+$true		2	1	0	#8

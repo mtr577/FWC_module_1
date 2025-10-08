@@ -1,0 +1,18 @@
+Netlist_File: sevseg.net Netlist_ID: SHA256:889ed366262316b4f4dfd1554a737ba7848b3a3f26069feec0b88c01eb9ed8b5
+Array size: 39 x 35 logic blocks
+
+#block name	x	y	subblk	block number
+#----------	--	--	------	------------
+a_LUT3_O.t_frag	24	7	0	#0
+$iopadmap$sevseg.a	12	3	0	#1
+$iopadmap$sevseg.d	18	3	0	#2
+$iopadmap$sevseg.e	20	3	0	#3
+$iopadmap$sevseg.f	24	3	0	#4
+Q		30	3	0	#5
+$iopadmap$sevseg.b	14	3	0	#6
+$iopadmap$sevseg.c	16	3	0	#7
+$iopadmap$sevseg.g	26	3	0	#8
+P		28	3	0	#9
+R		32	3	0	#10
+$false		3	1	0	#11
+$true		2	1	0	#12

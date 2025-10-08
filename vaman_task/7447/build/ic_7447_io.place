@@ -1,0 +1,9 @@
+#Block Name x   y   z    pcf_line
+#----- --  --  -    ----
+P      10   3  0  # set_io P  2
+Q      12   3  0  # set_io Q  3
+R      14   3  0  # set_io R  64
+$iopadmap$ic_7447.D  22   3  0  # set_io D  60
+$iopadmap$ic_7447.C  24   3  0  # set_io C  59
+$iopadmap$ic_7447.B  26   3  0  # set_io B  57
+$iopadmap$ic_7447.A  28   3  0  # set_io A  56

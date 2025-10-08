@@ -1,0 +1,8 @@
+set_io P  2
+set_io Q  3
+set_io R  64
+
+set_io D  60
+set_io C  59
+set_io B  57
+set_io A  56

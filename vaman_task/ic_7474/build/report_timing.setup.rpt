@@ -1,0 +1,95 @@
+#Timing report of worst 3 path(s)
+# Unit scale: 1e-09 seconds
+# Output precision: 3
+
+#Path 1
+Startpoint: F_led_dff_Q.QZ[0] (Q_FRAG clocked by clk)
+Endpoint  : out:F_led.outpad[0] (.output clocked by clk)
+Path Type : setup
+
+Point                                                                     Incr      Path
+----------------------------------------------------------------------------------------
+clock clk (rise edge)                                                    0.000     0.000
+clock source latency                                                     0.000     0.000
+u_qlal4s3b_cell_macro.Sys_Clk0[0] (ASSP)                                 0.000     0.000
+F_led_dff_Q.QCK[0] (Q_FRAG)                                             11.899    11.899
+F_led_dff_Q.QZ[0] (Q_FRAG) [clock-to-output]                             1.701    13.600
+$iopadmap$ic_7474.F_led.O_DAT[0] (BIDIR_CELL)                            4.042    17.642
+$iopadmap$ic_7474.F_led.O_PAD_$out[0] (BIDIR_CELL)                       9.809    27.451
+out:F_led.outpad[0] (.output)                                            0.000    27.451
+data arrival time                                                                 27.451
+
+clock clk (rise edge)                                                    0.000     0.000
+clock source latency                                                     0.000     0.000
+clock uncertainty                                                        0.000     0.000
+output external delay                                                    0.000     0.000
+data required time                                                                 0.000
+----------------------------------------------------------------------------------------
+data required time                                                                 0.000
+data arrival time                                                                -27.451
+----------------------------------------------------------------------------------------
+slack (VIOLATED)                                                                 -27.451
+
+
+#Path 2
+Startpoint: P.inpad[0] (.input clocked by clk)
+Endpoint  : F_dff_dff_Q.QD[0] (Q_FRAG clocked by clk)
+Path Type : setup
+
+Point                                                                 Incr      Path
+------------------------------------------------------------------------------------
+clock clk (rise edge)                                                0.000     0.000
+clock source latency                                                 0.000     0.000
+input external delay                                                 0.000     0.000
+P.inpad[0] (.input)                                                  0.000     0.000
+$iopadmap$ic_7474.P.I_PAD_$inp[0] (BIDIR_CELL)                       0.000     0.000
+$iopadmap$ic_7474.P.I_DAT[0] (BIDIR_CELL)                           10.958    10.958
+F_comb_LUT3_O.t_frag.XSL[0] (T_FRAG)                                 5.230    16.188
+F_comb_LUT3_O.t_frag.XZ[0] (T_FRAG)                                  1.462    17.650
+F_dff_dff_Q.QD[0] (Q_FRAG)                                           0.000    17.650
+data arrival time                                                             17.650
+
+clock clk (rise edge)                                                0.000     0.000
+clock source latency                                                 0.000     0.000
+u_qlal4s3b_cell_macro.Sys_Clk0[0] (ASSP)                             0.000     0.000
+F_dff_dff_Q.QCK[0] (Q_FRAG)                                          9.324     9.324
+clock uncertainty                                                    0.000     9.324
+cell setup time                                                      0.105     9.430
+data required time                                                             9.430
+------------------------------------------------------------------------------------
+data required time                                                             9.430
+data arrival time                                                            -17.650
+------------------------------------------------------------------------------------
+slack (VIOLATED)                                                              -8.220
+
+
+#Path 3
+Startpoint: F_dff_dff_Q.QZ[0] (Q_FRAG clocked by clk)
+Endpoint  : F_led_dff_Q.QD[0] (Q_FRAG clocked by clk)
+Path Type : setup
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock clk (rise edge)                                            0.000     0.000
+clock source latency                                             0.000     0.000
+u_qlal4s3b_cell_macro.Sys_Clk0[0] (ASSP)                         0.000     0.000
+F_dff_dff_Q.QCK[0] (Q_FRAG)                                      9.324     9.324
+F_dff_dff_Q.QZ[0] (Q_FRAG) [clock-to-output]                     1.701    11.026
+F_led_dff_Q.QD[0] (Q_FRAG)                                       5.380    16.406
+data arrival time                                                         16.406
+
+clock clk (rise edge)                                            0.000     0.000
+clock source latency                                             0.000     0.000
+u_qlal4s3b_cell_macro.Sys_Clk0[0] (ASSP)                         0.000     0.000
+F_led_dff_Q.QCK[0] (Q_FRAG)                                     11.899    11.899
+clock uncertainty                                                0.000    11.899
+cell setup time                                                  0.105    12.004
+data required time                                                        12.004
+--------------------------------------------------------------------------------
+data required time                                                        12.004
+data arrival time                                                        -16.406
+--------------------------------------------------------------------------------
+slack (VIOLATED)                                                          -4.402
+
+
+#End of timing report

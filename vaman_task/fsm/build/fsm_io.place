@@ -1,0 +1,7 @@
+#Block Name x   y   z    pcf_line
+#--------- --  --  -    ----
+$iopadmap$fsm.led_f  10   3  0  # set_io led_f   2   # LED for F
+$iopadmap$fsm.a  22   3  0  # set_io a       60   # BCD input A to 7447
+$iopadmap$fsm.b  24   3  0  # set_io b       59   # BCD input B to 7447
+$iopadmap$fsm.c  26   3  0  # set_io c       57   # BCD input C to 7447
+$iopadmap$fsm.d  28   3  0  # set_io d       56   # BCD input D to 7447

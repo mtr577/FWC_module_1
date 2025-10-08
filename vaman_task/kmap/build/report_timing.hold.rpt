@@ -1,0 +1,37 @@
+#Timing report of worst 1 path(s)
+# Unit scale: 1e-09 seconds
+# Output precision: 3
+
+#Path 1
+Startpoint: R.inpad[0] (.input clocked by virtual_io_clock)
+Endpoint  : out:F.outpad[0] (.output clocked by virtual_io_clock)
+Path Type : hold
+
+Point                                                              Incr      Path
+---------------------------------------------------------------------------------
+clock virtual_io_clock (rise edge)                                0.000     0.000
+clock source latency                                              0.000     0.000
+input external delay                                              0.000     0.000
+R.inpad[0] (.input)                                               0.000     0.000
+$iopadmap$kmap.R.I_PAD_$inp[0] (BIDIR_CELL)                       0.000     0.000
+$iopadmap$kmap.R.I_DAT[0] (BIDIR_CELL)                           10.153    10.153
+F_LUT3_O.t_frag.XSL[0] (T_FRAG)                                   7.140    17.293
+F_LUT3_O.t_frag.XZ[0] (T_FRAG)                                    1.041    18.334
+$iopadmap$kmap.F.O_DAT[0] (BIDIR_CELL)                            5.007    23.341
+$iopadmap$kmap.F.O_PAD_$out[0] (BIDIR_CELL)                       9.726    33.067
+out:F.outpad[0] (.output)                                         0.000    33.067
+data arrival time                                                          33.067
+
+clock virtual_io_clock (rise edge)                                0.000     0.000
+clock source latency                                              0.000     0.000
+clock uncertainty                                                 0.000     0.000
+output external delay                                             0.000     0.000
+data required time                                                          0.000
+---------------------------------------------------------------------------------
+data required time                                                         -0.000
+data arrival time                                                          33.067
+---------------------------------------------------------------------------------
+slack (MET)                                                                33.067
+
+
+#End of timing report

@@ -1,0 +1,7 @@
+$iopadmap$decade_counter.a  12   3  0  # set_io a	3
+$iopadmap$decade_counter.b  14   3  0  # set_io b	64
+$iopadmap$decade_counter.c  16   3  0  # set_io c	62
+$iopadmap$decade_counter.d  18   3  0  # set_io d	63
+$iopadmap$decade_counter.e  20   3  0  # set_io e	61
+$iopadmap$decade_counter.f  24   3  0  # set_io f	59
+$iopadmap$decade_counter.g  26   3  0  # set_io g	57

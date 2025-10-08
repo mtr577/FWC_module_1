@@ -1,0 +1,51 @@
+Netlist_File: fsm.net Netlist_ID: SHA256:b236163de49e9a61fea0ea800eccf8a2bffa8e5a164bfce41fe407d7186b210c
+Array size: 39 x 35 logic blocks
+
+#block name	x	y	subblk	block number
+#----------	--	--	------	------------
+u_qlal4s3b_cell_macro	1	1	0	#0
+delay_dff_Q_9_D_LUT4_O.c_frag	14	15	0	#1
+delay_dff_Q_9_D_LUT2_O_1.t_frag	16	15	0	#2
+delay_dff_Q_9_D_LUT2_O_2.t_frag	21	14	0	#3
+delay_dff_Q_9_D_LUT2_O_3.t_frag	19	13	0	#4
+delay_dff_Q_9_D_LUT3_O_2.t_frag	13	18	0	#5
+delay_dff_Q_9_D_LUT2_O.t_frag	19	15	0	#6
+delay_dff_Q_9_D_LUT3_O_7.t_frag	14	14	0	#7
+delay_dff_Q_9_D_LUT3_O_8.t_frag	15	13	0	#8
+delay_dff_Q_9_D_LUT3_O_9.t_frag	15	16	0	#9
+delay_dff_Q_9_D_LUT3_O_10.t_frag	15	18	0	#10
+delay_dff_Q_9_D_LUT3_O_11.t_frag	15	17	0	#11
+delay_dff_Q_9_D_LUT3_O_12.t_frag	17	17	0	#12
+delay_dff_Q_9_D_LUT3_O_13.t_frag	17	15	0	#13
+delay_dff_Q_9_D_LUT3_O_14.t_frag	17	16	0	#14
+delay_dff_Q_9_D_LUT3_O_15.t_frag	21	13	0	#15
+delay_dff_Q_9_D_LUT3_O_16.t_frag	19	12	0	#16
+delay_dff_Q_9_D_LUT3_O_17.t_frag	20	13	0	#17
+delay_dff_Q_9_D_LUT3_O_18.t_frag	19	14	0	#18
+delay_dff_Q_9_D_LUT3_O_19.t_frag	21	15	0	#19
+delay_dff_Q_9_D_LUT3_O.t_frag	13	15	0	#20
+delay_dff_Q_9_D_LUT3_O_1.t_frag	13	17	0	#21
+delay_dff_Q_9_D_LUT3_O_3.t_frag	15	14	0	#22
+delay_dff_Q_9_D_LUT3_O_4.t_frag	16	17	0	#23
+delay_dff_Q_9_D_LUT3_O_5.t_frag	16	16	0	#24
+delay_dff_Q_9_D_LUT3_O_6.t_frag	14	13	0	#25
+Q_LUT2_I0.t_frag	19	11	0	#26
+P_LUT3_I0.t_frag	15	11	0	#27
+$iopadmap$fsm.led_f	10	3	0	#28
+$iopadmap$fsm.a	22	3	0	#29
+$iopadmap$fsm.b	24	3	0	#30
+$iopadmap$fsm.c	26	3	0	#31
+R_dffe_Q_EN_LUT4_O.c_frag	15	15	0	#32
+delay_dff_Q_9_D_LUT3_O_14_I1_LUT4_I3.c_frag	18	16	0	#33
+delay_dff_Q_9_D_LUT3_O_14_I1_LUT4_O.c_frag	20	14	0	#34
+delay_dff_Q_9_D_LUT3_O_17_I1_LUT4_O.c_frag	20	15	0	#35
+delay_dff_Q_9_D_LUT3_O_7_I1_LUT4_O.c_frag	14	16	0	#36
+delay_dff_Q_9_D_LUT3_O_7_I1_LUT4_I3.c_frag	14	17	0	#37
+delay_dff_Q_9_D_LUT3_O_I1_LUT4_O.c_frag	13	16	0	#38
+R_dffe_Q_EN_LUT4_O_I3_LUT3_O_I2_LUT3_O.t_frag	17	14	0	#39
+$iopadmap$fsm.d	28	3	0	#40
+delay_dff_Q_9_D_LUT3_O_5_I1_LUT2_O_I0_LUT3_I0.t_frag	16	14	0	#41
+R_dffe_Q_EN_LUT4_O_I0_LUT2_O.t_frag	18	15	0	#42
+R_dffe_Q_EN_LUT4_O_I2_LUT2_O.t_frag	12	16	0	#43
+$false		3	1	0	#44
+$true		2	1	0	#45

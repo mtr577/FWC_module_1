@@ -1,0 +1,95 @@
+#Timing report of worst 3 path(s)
+# Unit scale: 1e-09 seconds
+# Output precision: 3
+
+#Path 1
+Startpoint: F_dff_dff_Q.QZ[0] (Q_FRAG clocked by clk)
+Endpoint  : F_led_dff_Q.QD[0] (Q_FRAG clocked by clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock clk (rise edge)                                            0.000     0.000
+clock source latency                                             0.000     0.000
+u_qlal4s3b_cell_macro.Sys_Clk0[0] (ASSP)                         0.000     0.000
+F_dff_dff_Q.QCK[0] (Q_FRAG)                                      9.324     9.324
+F_dff_dff_Q.QZ[0] (Q_FRAG) [clock-to-output]                     1.393    10.717
+F_led_dff_Q.QD[0] (Q_FRAG)                                       5.380    16.097
+data arrival time                                                         16.097
+
+clock clk (rise edge)                                            0.000     0.000
+clock source latency                                             0.000     0.000
+u_qlal4s3b_cell_macro.Sys_Clk0[0] (ASSP)                         0.000     0.000
+F_led_dff_Q.QCK[0] (Q_FRAG)                                     11.899    11.899
+clock uncertainty                                                0.000    11.899
+cell hold time                                                   0.571    12.470
+data required time                                                        12.470
+--------------------------------------------------------------------------------
+data required time                                                       -12.470
+data arrival time                                                         16.097
+--------------------------------------------------------------------------------
+slack (MET)                                                                3.628
+
+
+#Path 2
+Startpoint: R.inpad[0] (.input clocked by clk)
+Endpoint  : F_dff_dff_Q.QD[0] (Q_FRAG clocked by clk)
+Path Type : hold
+
+Point                                                                 Incr      Path
+------------------------------------------------------------------------------------
+clock clk (rise edge)                                                0.000     0.000
+clock source latency                                                 0.000     0.000
+input external delay                                                 0.000     0.000
+R.inpad[0] (.input)                                                  0.000     0.000
+$iopadmap$ic_7474.R.I_PAD_$inp[0] (BIDIR_CELL)                       0.000     0.000
+$iopadmap$ic_7474.R.I_DAT[0] (BIDIR_CELL)                           10.153    10.153
+F_comb_LUT3_O.t_frag.XAB[0] (T_FRAG)                                 3.431    13.584
+F_comb_LUT3_O.t_frag.XZ[0] (T_FRAG)                                  0.909    14.493
+F_dff_dff_Q.QD[0] (Q_FRAG)                                           0.000    14.493
+data arrival time                                                             14.493
+
+clock clk (rise edge)                                                0.000     0.000
+clock source latency                                                 0.000     0.000
+u_qlal4s3b_cell_macro.Sys_Clk0[0] (ASSP)                             0.000     0.000
+F_dff_dff_Q.QCK[0] (Q_FRAG)                                          9.324     9.324
+clock uncertainty                                                    0.000     9.324
+cell hold time                                                       0.571     9.895
+data required time                                                             9.895
+------------------------------------------------------------------------------------
+data required time                                                            -9.895
+data arrival time                                                             14.493
+------------------------------------------------------------------------------------
+slack (MET)                                                                    4.598
+
+
+#Path 3
+Startpoint: F_led_dff_Q.QZ[0] (Q_FRAG clocked by clk)
+Endpoint  : out:F_led.outpad[0] (.output clocked by clk)
+Path Type : hold
+
+Point                                                                     Incr      Path
+----------------------------------------------------------------------------------------
+clock clk (rise edge)                                                    0.000     0.000
+clock source latency                                                     0.000     0.000
+u_qlal4s3b_cell_macro.Sys_Clk0[0] (ASSP)                                 0.000     0.000
+F_led_dff_Q.QCK[0] (Q_FRAG)                                             11.899    11.899
+F_led_dff_Q.QZ[0] (Q_FRAG) [clock-to-output]                             1.393    13.292
+$iopadmap$ic_7474.F_led.O_DAT[0] (BIDIR_CELL)                            4.042    17.333
+$iopadmap$ic_7474.F_led.O_PAD_$out[0] (BIDIR_CELL)                       9.726    27.059
+out:F_led.outpad[0] (.output)                                            0.000    27.059
+data arrival time                                                                 27.059
+
+clock clk (rise edge)                                                    0.000     0.000
+clock source latency                                                     0.000     0.000
+clock uncertainty                                                        0.000     0.000
+output external delay                                                    0.000     0.000
+data required time                                                                 0.000
+----------------------------------------------------------------------------------------
+data required time                                                                -0.000
+data arrival time                                                                 27.059
+----------------------------------------------------------------------------------------
+slack (MET)                                                                       27.059
+
+
+#End of timing report

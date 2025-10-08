@@ -1,0 +1,7 @@
+# Inputs
+set_io P 2
+set_io Q 3
+set_io R 64
+
+# Output
+set_io F_led 60

@@ -1,0 +1,6 @@
+#Block Name x   y   z    pcf_line
+#----- --  --  -    ----
+P       8   3  0  # set_io P 6
+Q      10   3  0  # set_io Q 2
+R      12   3  0  # set_io R 3
+$iopadmap$blink.F  16   3  0  # set_io F 62
